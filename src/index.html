@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/dist/output.css" rel="stylesheet" />
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="./css/all.min.css" />
+    <link rel="stylesheet" href="./css/fontawesome.min.css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script>
+      $( function() {
+        $("#accordion").accordion({
+  collapsible: true,
+  active: false,
+  heightStyle: "content"
+});
+$("#accordion .ui-accordion-header").click(function() {
+  $(this)
+    .children("i")
+    .toggleClass("fa-plus fa-minus");
+  $(".ui-accordion-header")
+    .not($(this))
+    .children("i")
+    .removeClass("fa-circle");
+  $(".ui-accordion-header")
+    .not($(this))
+    .children("i")
+    .addClass("fa-circle");
+});
+
+      } );
+      </script>
+
+<script>
+  $( function() {
+    var SlideNext = function() {
+	var slide = jQuery('.slideContainer'),
+			slideActiveLeft = slide.find('.activeLeft').index(),
+			slideActiveCenter = slide.find('.activeCenter').index(),
+			slideActiveRight = slide.find('.activeRight').index();
+
+	slide.find('.slide').eq(slideActiveLeft).removeClass('active activeLeft');
+	slide.find('.slide').eq(slideActiveCenter).removeClass('activeCenter').addClass('activeLeft');
+	slide.find('.slide').eq(slideActiveRight).removeClass('activeRight').addClass('activeCenter');
+	slide.find('.slide').eq((slideActiveRight + 1)).addClass('active activeRight');
+};
+
+var SlidePrev = function() {
+	var slide = jQuery('.slideContainer'),
+			slideActiveLeft = slide.find('.activeLeft').index(),
+			slideActiveCenter = slide.find('.activeCenter').index(),
+			slideActiveRight = slide.find('.activeRight').index();
+
+	slide.find('.slide').eq(slideActiveLeft).removeClass('activeLeft').addClass('activeCenter');
+	slide.find('.slide').eq(slideActiveCenter).removeClass('activeCenter').addClass('activeRight');
+	slide.find('.slide').eq(slideActiveRight).removeClass('active activeRight');
+	slide.find('.slide').eq((slideActiveLeft - 1)).addClass('active activeLeft');
+};
+
+jQuery(document).ready(function() {
+	var interval, timer = function() {
+		interval = setInterval(function() {
+			SlideNext();
+		}, 9000);
+	};
+	jQuery('.next').on('click', function() {
+		SlideNext();
+	});
+	jQuery('.prev').on('click', function() {
+		clearInterval(interval);
+		timer()
+		SlidePrev();
+	});
+	setInterval(function() {
+	}, 3000);
+});
+
+  } );
+  </script>
+
+  </head>
+  <body>
+    <!--Header Section-->
+    <header class="pt-6">
+      <div class="width flex justify-between items-center font-Montserrat">
+        <div class="flex items-center">
+          <img src="../src/assets/logo.png" alt="" class="w-[150px] pr-1" />
+          <span
+            class="text-secondary text-base pl-1 border-l-[1px] border-solid border-[#505056] font-medium"
+            >For Business</span
+          >
+        </div>
+
+        <div>
+          <ul class="flex gap-12 text-sm navLinks">
+            <li class=""><a href="#">Pricing</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div class="flex gap-8">
+          <button class="text-blue font-bold text-sm">Sign up</button>
+          <button class="button">Sign In</button>
+        </div>
+      </div>
+    </header>
+
+    <!--Hero Section-->
+
+    <section class="hero-bg">
+      <div class="width">
+        <div class="md:w-[55%] pt-16 md:pt-32">
+          <h1
+            class="text-primary font-bold font-Roboto text-4xl md:text-6xl text-center left-[65px] mb-3 md:mb-6"
+          >
+            <span class="text-[#EF5253]">Drive</span> a Culture of
+            <span class="text-blue">Workplace</span> Recognition
+          </h1>
+          <p class="paragraph">
+            With RecoCards at work, celebrate goals, recognize achievements, and
+            boost individual and team morale, thus
+            <span class="font-semibold"
+              >delivering a 31% boost in productivity.</span
+            >
+          </p>
+
+          <div class="flex justify-center gap-8 mt-8 md:mt-14 mb-8 md:mb-0">
+            <button class="button">View Pricing</button>
+            <button
+              class="boxShadow text-blue font-bold font-Montserrat bg-white py-3 px-6 rounded-3xl"
+            >
+              Get Started
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--Workplace Recognition -->
+    <section class="width pt-14 md:pt-10 pb-20 md:pb-40">
+      <h2 class="heading">Why Workplace Recognition Matters</h2>
+      <p class="despc">
+        Per a report from Apollo technical, employee recognition leads to a 31%
+        boost in Business productivity.
+      </p>
+
+      <div class="relative md:w-[200px] m-auto pt-6 md:pt-40 px-4 md:px-0">
+        <img src="../src/assets/steps-line.png" alt="" class="h-screen hidden md:block" />
+
+        <div
+          class="md:absolute top-[8%] left-[-228%] rounded-2xl p-[2px] mb-8 md:mb-0 linear-bg"
+        >
+          <div class="relative md:w-[450px] h-[280px] md:h-[215px] bg-white rounded-2xl p-3">
+            <h4 class="subHeading leading-7 mb-2">
+              More than 40% of Employed Americans
+            </h4>
+            <p class="text-secondary font-normal font-Montserrat text-base">
+              Feel that if they were recognized more often, they would put
+              more energy into their work.
+            </p>
+            <div class="absolute top-[-10px] md:top-[-8px] right-[-11px] md:right-[-9px]">
+              <img
+                src="../src/assets/right-border.png"
+                alt=""
+                class="w-[156px] md:w-[120px]"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="md:absolute top-[42%] left-[-228%] rounded-2xl p-[2px] mb-8 md:mb-0 linear-bg"
+        >
+          <div class="relative md:w-[450px] h-[280px] md:h-[215px] bg-white rounded-2xl p-3">
+            <h4 class="subHeading leading-7 mb-2">
+              Better Retention and Reduced Hiring Costs
+            </h4>
+            <p class="text-secondary font-normal font-Montserrat text-base">
+              Lack of recognition and engagement contributed to 44% of employees
+              changing jobs and quiet quitting.
+            </p>
+            <div class="absolute top-[-10px] md:top-[-8px] right-[-11px] md:right-[-9px]">
+              <img
+                src="../src/assets/right-border.png"
+                alt=""
+                class="w-[156px] md:w-[120px]"
+              />
+            </div>
+        </div>
+        </div>
+
+        <div
+          class="md:absolute top-[76%] left-[-228%] rounded-2xl p-[2px] mb-8 md:mb-0 linear-bg"
+        >
+          <div class="relative md:w-[450px] h-[280px] md:h-[215px] bg-white rounded-2xl p-3">
+            <h4 class="subHeading leading-7 mb-2">Boosted Company Culture</h4>
+            <p class="text-secondary font-normal font-Montserrat text-base">
+              Companies that prioritize workplace recognition report a 32%
+              increase in employee satisfaction and a more positive company
+              culture (Gallup, 2017)
+            </p>
+            <div class="absolute top-[-10px] md:top-[-8px] right-[-11px] md:right-[-9px]">
+              <img
+                src="../src/assets/right-border.png"
+                alt=""
+                class="w-[156px] md:w-[120px]"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="md:absolute top-[19%] right-[-206%] rounded-2xl p-[2px] mb-8 md:mb-0 linear-bg"
+        >
+          <div class="relative md:w-[450px] h-[280px] md:h-[215px] bg-white rounded-2xl p-3">
+            <h4 class="subHeading leading-7 mb-2">
+              Increased Job Satisfaction
+            </h4>
+            <p class="text-secondary font-normal font-Montserrat text-base">
+              Recognized employees are 63% more likely to stay at their current
+              job within the next three to six months.
+            </p>
+            <div class="absolute top-[-10px] md:top-[-8px] left-[-11px] md:left-[-9px]">
+              <img
+                src="../src/assets/left-border.png"
+                alt=""
+                class="w-[156px] md:w-[120px]"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="md:absolute top-[54%] right-[-206%] rounded-2xl p-[2px] mb-8 md:mb-0 linear-bg"
+        >
+          <div class="relative md:w-[450px] h-[280px] md:h-[215px] bg-white rounded-2xl p-3">
+            <h4 class="subHeading leading-7 mb-2">Enhanced Teamwork</h4>
+            <p class="text-secondary font-normal font-Montserrat text-base">
+              Employees who feel recognized are more likely to collaborate with
+              their colleagues, leading to a 26% increase in teamwork and
+              cooperation.
+            </p>
+            <div class="absolute top-[-10px] md:top-[-8px] left-[-11px] md:left-[-9px]">
+              <img
+                src="../src/assets/left-border.png"
+                alt=""
+                class="w-[156px] md:w-[120px]"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="md:absolute top-[88%] right-[-206%] rounded-2xl p-[2px] mb-8 md:mb-0 linear-bg"
+        >
+          <div class="relative md:w-[450px] h-[280px] md:h-[215px] bg-white rounded-2xl p-3">
+            <h4 class="subHeading leading-7 mb-2">
+              Enhanced Company Reputation
+            </h4>
+            <p class="text-secondary font-normal font-Montserrat text-base">
+              Companies with strong workplace recognition programs enjoy a
+              better reputation in their industry, as recognized employees are
+              more likely to share their positive experiences with others,
+              resulting in a 28% increase in positive word-of-mouth (Corporate
+              Responsibility Magazine, 2019)
+            </p>
+            <div class="absolute top-[-10px] md:top-[-8px] left-[-11px] md:left-[-9px]">
+              <img
+                src="../src/assets/left-border.png"
+                alt=""
+                class="w-[154px] md:w-[120px]"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--Recognize Co-workers Section-->
+
+    <section class="bg-[#E6F6FE] pt-14 md:pt-20 pb-10 md:pb-0 ">
+      <div class="width">
+        <h2 class="heading mb-1 md:mb-3">Recognize Co-Workers for</h2>
+        <div class="md:flex flex-wrap mt-9 md:mt-16">
+          <div class="box-content">
+            <img src="../src/assets/icon1.png" alt="" class="w-[40px] md:w-[60px] m-auto" />
+            <h4 class="subHeading my-3">Special Occasions</h4>
+            <p class="paragraph">
+              Make employees feel valued and appreciated on work anniversaries,
+              birthdays, farewells and career milestones. Welcome new joins and
+              make them feel part of the team from day 1.
+            </p>
+          </div>
+
+          <div class="box-content">
+            <img src="../src/assets/icon2.png" alt="" class="w-[40px] md:w-[60px] m-auto" />
+            <h4 class="subHeading my-3">Promotions</h4>
+            <p class="paragraph">
+              Recognizing their hard work, dedication, and commitment to
+              professional growth.
+            </p>
+          </div>
+
+          <div class="box-content">
+            <img src="../src/assets/icon3.png" alt="" class="w-[40px] md:w-[60px] m-auto" />
+            <h4 class="subHeading my-3">Wins</h4>
+            <p class="paragraph">
+              Encourage team members to give shout-outs to their colleagues for
+              small wins, or other accomplishments, fostering a positive and
+              supportive work environment.
+            </p>
+          </div>
+
+          <div class="box-content">
+            <img src="../src/assets/icon4.png" alt="" class="w-[40px] md:w-[60px] m-auto" />
+            <h4 class="subHeading my-3">Help and Acts of Kindness</h4>
+            <p class="paragraph">
+              Recognize helpful employees for their efforts in making it a
+              better place to work.
+            </p>
+          </div>
+
+          <div class="box-content my-3">
+            <img src="../src/assets/icon5.png" alt="" class="w-[40px] md:w-[60px] m-auto" />
+            <h4 class="subHeading my-3">Celebrate Team Goals</h4>
+            <p class="paragraph">
+              Acknowledge and praise the collective efforts of a team when they
+              achieve their goals or complete significant projects.
+            </p>
+          </div>
+
+          <div class="box-content">
+            <img src="../src/assets/icon6.png" alt="" class="w-[40px] md:w-[60px] m-auto" />
+            <h4 class="subHeading my-3">Learning and Mentorship</h4>
+            <p class="paragraph">
+              Celebrate employees who dedicate time and effort to mentor and
+              support their colleagues, sharing their knowledge and expertise,
+              fostering a culture of continuous learning, and contributing to
+              the professional growth of others within the organization.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--Testimonial Sliders-->
+    <!-- <section class="bg-[#F2FAFE] py-40">
+      <h2 class="heading">Testimonials</h2>
+      <p class="despc">A sample of reviews that we received from our customers.</p>
+      <span class="text-blue font-Inter capitalize text-center text-sm block mt-[-3px] mb-20">(names and titles redacted for privacy)</span>
+
+    <div class="customSilder">
+      <ul class="slideContainer">
+        <li class="slide active activeLeft">
+          <div class="slide-box-shaddow bg-white h-[300px] w-full border-xl">
+            <p>I'm very happy with Recocards! It's easy, very customizable and delivers perfectly on time! I'd recommend it to anyone! Thank you!!</p>
+            <div class="flex">
+              <img src="../src/assets/user.png" alt="">
+
+              <div>
+                <h6>Chris</h6>
+                <span>Dell</span>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="slide active activeCenter">
+          <div class="slide-box-shaddow bg-white h-[300px] w-full border-xl">
+            <p>I'm very happy with Recocards! It's easy, very customizable and delivers perfectly on time! I'd recommend it to anyone! Thank you!!</p>
+            <div class="flex">
+              <img src="../src/assets/user.png" alt="">
+
+              <div>
+                <h6>Chris</h6>
+                <span>Dell</span>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="slide active activeRight">
+          <div class="slide-box-shaddow bg-white h-[300px] w-full border-xl">
+          <p>I'm very happy with Recocards! It's easy, very customizable and delivers perfectly on time! I'd recommend it to anyone! Thank you!!</p>
+          <div class="flex">
+            <img src="../src/assets/user.png" alt="">
+
+            <div>
+              <h6>Chris</h6>
+              <span>Dell</span>
+            </div>
+          </div>
+        </div>
+      </li>
+        <li class="slide">          <div class="slide-box-shaddow bg-white p-5 border-xl">
+          <p>I'm very happy with Recocards! It's easy, very customizable and delivers perfectly on time! I'd recommend it to anyone! Thank you!!</p>
+          <div class="flex">
+            <img src="../src/assets/user.png" alt="">
+
+            <div>
+              <h6>Chris</h6>
+              <span>Dell</span>
+            </div>
+          </div>
+        </div>
+      </li>
+        <li class="slide">          <div class="slide-box-shaddow bg-white p-5 border-xl">
+          <p>I'm very happy with Recocards! It's easy, very customizable and delivers perfectly on time! I'd recommend it to anyone! Thank you!!</p>
+          <div class="flex">
+            <img src="../src/assets/user.png" alt="">
+
+            <div>
+              <h6>Chris</h6>
+              <span>Dell</span>
+            </div>
+          </div>
+        </div>
+      </li>
+      </ul>
+      
+      <div class="sliderControls">
+        <ul>
+          <li class="SilderControl prev"><i class="fa-solid fa-arrow-left"></i></li>
+          <li class="SilderControl next"><i class="fa-solid fa-arrow-right"></i></li>
+        </ul>
+      </div>
+    </div>
+  </section> -->
+
+    <!--Pricing Section-->
+    <section class="md:w-[55%] px-4 md:px-0 m-auto py-14 font-Inter">
+      <h2 class="heading">Pricing</h2>
+      <p class="despc">Fixable Pricing for Your Business Needs</p>
+
+      <div class="md:flex gap-8 mt-10 md:mt-16">
+        <div class="basis-1/2 bg-white box-shadow rounded-2xl mb-8 md:mb-0">
+          <span
+            class="bg-blue w-full block border-radius px-4 py-2 text-white text-sm font-medium"
+            >Business Plan</span
+          >
+
+          <div class="p-6">
+            <div class="flex justify-between items-center">
+              <h4 class="text-blue font-bold text-4xl">
+                $90 <span class="text-secondary font-medium text-xs">/mo</span>
+              </h4>
+              <div
+                class="flex justify-between bg-[#E6F6FE] px-4 py-3 text-xs rounded-md"
+              >
+                <span class="text-secondary font-medium"
+                  >1-49 Employees <i class="fa-solid fa-chevron-down"></i
+                ></span>
+              </div>
+            </div>
+            <p
+              class="text-[#7A7A7A] font-normal font-Inter text-xs mt-6 h-[85px]"
+            >
+              Covers everything for workplace appreciation and employee
+              recognition, including important milestones and the countless
+              memorable moments.
+            </p>
+            <button class="button w-full">Get Started</button>
+
+            <ul class="text-secondary text-sm lists">
+              <li>
+                <i class="fa-solid fa-circle-check"></i> Unlimited cards and
+                boards
+              </li>
+              <li><i class="fa-solid fa-circle-check"></i> 1-49 employees</li>
+              <li>
+                <i class="fa-solid fa-circle-check"></i> Multiple layouts:
+                Greeting card and Kudos board
+              </li>
+              <li><i class="fa-solid fa-circle-check"></i> Custom subdomain</li>
+              <li>
+                <i class="fa-solid fa-circle-check"></i> Custom logo and
+                branding
+              </li>
+              <li>
+                <i class="fa-solid fa-circle-check"></i> Internal tools
+                integration with company domain
+              </li>
+              <li>
+                <i class="fa-solid fa-circle-check"></i> Premium covers and
+                graphics
+              </li>
+              <li>
+                <i class="fa-solid fa-circle-check"></i> Gift cards and wishlist
+                integrations
+              </li>
+              <li>
+                <i class="fa-solid fa-circle-check"></i> PDF / JPG downloads
+              </li>
+              <li><i class="fa-solid fa-circle-check"></i> 99.99%+ uptime</li>
+              <li>
+                <i class="fa-solid fa-circle-check"></i> 100% at-rest and
+                in-transit encryption
+              </li>
+              <li>
+                <i class="fa-solid fa-circle-check"></i> Likes and comments
+              </li>
+              <li>
+                <i class="fa-solid fa-circle-check"></i> Admin and moderation
+              </li>
+              <li>
+                <i class="fa-solid fa-circle-check"></i> Dedicated support
+              </li>
+              <li>
+                <i class="fa-solid fa-circle-check"></i> Dedicated feature queue
+                and prioritization
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="basis-1/2 bg-white box-shadow rounded-2xl">
+          <span
+            class="bg-[#EF5253] w-full block border-radius px-4 py-2 text-white text-sm font-medium"
+            >Enterprise Plan</span
+          >
+
+          <div class="p-6">
+            <div class="flex justify-between items-center">
+              <h4 class="text-[#EF5253] font-bold text-4xl">
+                $__ <span class="text-secondary font-medium text-xs">/mo</span>
+              </h4>
+              <div
+                class="flex justify-between bg-[#FEEEEE] px-4 py-3 text-xs rounded-md"
+              >
+                <span class="text-secondary font-medium"
+                  ><i class="fa-solid fa-circle-check text-[#EF5253] mr-1"></i>
+                  1999+ employees</span
+                >
+              </div>
+            </div>
+            <p
+              class="text-[#7A7A7A] font-normal font-Inter text-xs mt-6 h-[85px]"
+            >
+              Customized plan and dedicated features for large enterprises with
+              unique needs.
+            </p>
+            <button class="button w-full contact-bttn">Contact Us</button>
+
+            <ul class="text-secondary text-sm lists enterprice-lists">
+              <li>
+                <i class="fa-solid fa-circle-check"></i> All business features
+              </li>
+              <li><i class="fa-solid fa-circle-check"></i> 1-49 employees</li>
+              <li>
+                <i class="fa-solid fa-circle-check"></i> Up to unlimited
+                employees
+              </li>
+              <li>
+                <i class="fa-solid fa-circle-check"></i> Single sign-on (SSO)
+              </li>
+              <li><i class="fa-solid fa-circle-check"></i> Dedicated stack</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      </section>
+
+            <!--Contact Section-->
+            <section
+            class="px-4 md:px-0 "
+          >
+          <div class="md:w-[55%] m-auto bg-[#F2FAFE] md:flex gap-5 justify-between px-3 md:px-6 py-8 md:py-10 rounded-xl mb-16">
+            <div class="font-Montserrat text-center md:text-left">
+              <h6 class="text-blue font-bold mb-3">Custom Pricing</h6>
+              <p class="text-[#7A7A7A] font-bold text-xs left-10 capitalize">
+                We offer custom pricing for educational and non-profit
+                organizations. Contact us today to discuss.
+              </p>
+            </div>
+            <div class="text-center md:text-left mt-4 md:mt-0">
+              <button class="button">Contact Us</button>
+            </div>
+          </div>
+          </section>
+        </section>
+
+
+
+      <!--Frequently Asked Questions-->
+      <section class="bg-[#FCFCFC] py-8">
+        <div class="md:w-3/5 m-auto my-10 px-4 md:px-0">
+          <h2 class="heading mb-14">Frequently Asked Questions</h2>
+
+          <div id="accordion" class="font-Inter">
+            <p>
+              <strong>Are you able to offer SSO for business plans?</strong>
+              <i class="fa fa-plus-circle"></i>
+            </p>
+            <div>
+              <p>
+                Yes. However, please note that SSO may incur a slight additional
+                cost. Please contact us for more information.
+              </p>
+            </div>
+            <p>
+              <strong>What is the onboarding process?</strong>
+              <i class="fa fa-plus-circle"></i>
+            </p>
+            <div>
+              <p>
+                Yes. However, please note that SSO may incur a slight additional
+                cost. Please contact us for more information.
+              </p>
+            </div>
+            <p>
+              <strong>I've a feature request. Would you support it?</strong>
+              <i class="fa fa-plus-circle"></i>
+            </p>
+            <div>
+              <p>
+                Yes. However, please note that SSO may incur a slight additional
+                cost. Please contact us for more information.?
+              </p>
+            </div>
+            <p>
+              <strong>Can a user add gift cards to their cards?</strong>
+              <i class="fa fa-plus-circle"></i>
+            </p>
+            <div>
+              <p>Do you allow custom backgrounds and designs?</p>
+            </div>
+            <p>
+              <strong>
+                Can I offer RecoCards as employee benefit for personal use?
+              </strong>
+              <i class="fa fa-plus-circle"></i>
+            </p>
+            <div>
+              <p>
+                Yes. However, please note that SSO may incur a slight additional
+                cost. Please contact us for more information.
+              </p>
+            </div>
+            <p>
+              <strong>Do you allow custom backgrounds and designs?</strong>
+              <i class="fa fa-plus-circle"></i>
+            </p>
+            <div>
+              <p>
+                Yes. However, please note that SSO may incur a slight additional
+                cost. Please contact us for more information.
+              </p>
+            </div>
+            <p>
+              <strong>Do you offer a white-label solution?</strong>
+              <i class="fa fa-plus-circle"></i>
+            </p>
+            <div>
+              <p>
+                Yes. However, please note that SSO may incur a slight additional
+                cost. Please contact us for more information.
+              </p>
+            </div>
+            <p>
+              <strong>I've an integration use-case.</strong>
+              <i class="fa fa-plus-circle"></i>
+            </p>
+            <div>
+              <p>
+                Yes. However, please note that SSO may incur a slight additional
+                cost. Please contact us for more information.
+              </p>
+            </div>
+            <p>
+              <strong>
+                Does the business plan include both boards and cards?
+              </strong>
+              <i class="fa fa-plus-circle"></i>
+            </p>
+            <div>
+              <p>
+Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis culpa corrupti temporibus nemo et soluta, ullam unde reiciendis qui quod!
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+    <!--Footer-Top- Section-->
+
+    <section class="bg-[#E6F6FE] py-8">
+      <div class="width">
+        <div class="flex gap-6 md:gap-10 items-center">
+          <img src="../src/assets/logo.png" alt="" class="w-[120px] md:w-[160px]"/>
+          <div
+            class="flex social-icon gap-4 border-l-[1px] border-solid border-secondary pl-[35px]"
+          >
+            <i class="fa-brands fa-facebook-f"></i>
+            <i class="fa-brands fa-twitter"></i>
+            <i class="fa-brands fa-instagram"></i>
+          </div>
+        </div>
+        <div
+          class="flex flex-wrap justify-between gap-2 mt-12 mb-3 text-Inter font-medium text-sm md:text-base text-secondary footer-links"
+        >
+          <div class="basis-full md:basis-1/5">
+            <ul class="flex md:block justify-between ">
+              <li><a href="">Home</a></li>
+              <li><a href="">Use Cases</a></li>
+              <li><a href="">Terms of services</a></li>
+              <li><a href="">Privacy & Policy</a></li>
+            </ul>
+          </div>
+
+          <div class="basis-1/4 md:basis-1/5">
+            <ul class="text-xs md:text-base px-4 md:px-0">
+              <li>Free Group Birthday Cards</li>
+              <li>Free GroupGreeting Cards</li>
+              <li>Online Group Together Cards, Free</li>
+              <li>Free Group eCards With Multiple Signers</li>
+            </ul>
+          </div>
+
+          <div class="basis-1/4 md:basis-1/5">
+            <ul class="text-xs md:text-base">
+              <li>RecoCards is a Free Kudoboard alternative</li>
+              <li>Free Group Gift Cards</li>
+              <li>Free Group Electronic Cards</li>
+            </ul>
+          </div>
+
+          <div class="basis-1/4 md:basis-1/5 text-xs md:text-base">
+            <ul>
+              <li>Virtual Farewell cards online - eCards</li>
+              <li>Free GroupGreeting Cards</li>
+              <li>Free Group Card Online With Multiple Signatures</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--Footer Section-->
+    <footer class="bg-[#4DA6D5] py-3 text-center px-1 md:px-0">
+      <p class="font-Inter text-[11px] md:text-sm capitalize text-white">
+        © Copyright 2020-23
+        <a href="" class="underline">recocards.com.</a>
+        user-support@recocards.com
+      </p>
+    </footer>
+
+  </body>
+</html>
